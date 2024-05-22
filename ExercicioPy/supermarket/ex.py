@@ -1,4 +1,5 @@
 
+from turtle import color
 import pandas as pd
 df_supermarket = pd.read_json('supermarket.json')
 
@@ -57,3 +58,10 @@ def faturamento_mensal(loja_id, mes):
                     return faturamento
                 return None
             faturamento_mensal(8,5)
+
+cores = ['red', 'blue', 'green', 'yellow', ]
+            faturamento = []
+            for i in range(1, 6):
+                faturamento.append(extrair_faturamento_loja_ano(5, i))
+                plt.plot(mes, faturamento_mensal, 'o', color = 1)
+                
