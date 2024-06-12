@@ -1,0 +1,332 @@
+Aula 19 - Curso de Introdução ao Streamlit
+Duração: 4 horas
+Objetivo:
+Apresentar a ferramenta Streamlit para criação rápida e interativa de aplicações web com Python, utilizando conhecimentos de Python e ferramentas de plotagem.
+Pré-requisitos:
+Conhecimento de Python
+Familiaridade com bibliotecas de plotagem como matplotlib, seaborn e plotly
+Estrutura do Curso
+Introdução ao Streamlit 
+O que é o Streamlit
+Comparação com outras ferramentas de desenvolvimento web
+Instalação do Streamlit
+Primeiro script com Streamlit
+Fundamentos do Streamlit
+Estrutura básica de uma aplicação Streamlit
+Elementos de layout
+Widgets interativos
+Exibição de texto e dados
+Trabalhando com Dados e Visualizações
+Carregamento e exibição de dados
+Integração com pandas
+Visualizações com matplotlib, seaborn e plotly
+Casos práticos
+Componentes Avançados e Customização
+Adicionando interatividade
+Customizando visualizações
+Uso de callbacks e atualização de elementos
+Projeto Prático
+Desenvolvimento de uma aplicação completa
+Exemplos de aplicações no mundo real
+Implementação de um dashboard interativo
+Q&A e Encerramento
+Perguntas e Respostas
+Dicas e boas práticas
+Recursos adicionais e próximos passos
+Detalhamento do Conteúdo
+1. Introdução ao Streamlit
+1.1 O que é o Streamlit:
+Ferramenta para criação de aplicações web interativas usando Python: Streamlit é uma biblioteca open-source em Python que permite criar aplicações web interativas de maneira simples e rápida. Com Streamlit, desenvolvedores podem transformar scripts Python em aplicativos web que podem ser usados para visualização de dados, dashboards interativos, prototipagem de modelos de machine learning e muito mais, sem a necessidade de conhecimentos avançados de desenvolvimento web.
+Ideal para prototipagem rápida e dashboards de dados: Streamlit é útil para cientistas de dados e analistas que desejam criar dashboards interativos e protótipos de maneira rápida e eficiente. A biblioteca permite a construção de interfaces de usuário intuitivas com um mínimo de código, focando na simplicidade e na velocidade de desenvolvimento.
+1.2 Comparação com outras ferramentas:
+Vantagens sobre Flask/Django para aplicações de dados:
+Simplicidade: Diferente de frameworks web como Flask e Django, Streamlit não requer a criação de rotas, templates HTML, ou manipulação de requests/responses HTTP. Ele é voltado diretamente para a criação de interfaces interativas com um foco em dados.
+Tempo de Desenvolvimento: Streamlit permite criar aplicações completas com muito menos código e em menos tempo, facilitando a prototipagem rápida.
+Foco em Data Apps: Streamlit foi desenvolvido especificamente para aplicações de dados, oferecendo widgets e funções que simplificam a visualização e interação com dados.
+1.3 Instalação do Streamlit:
+Para instalar o Streamlit, você pode usar o pip, o gerenciador de pacotes do Python. Execute o seguinte comando no terminal ou prompt de comando:
+
+
+pip install streamlit
+
+1.4 Primeiro script com Streamlit:
+Para criar sua primeira aplicação com Streamlit, crie um novo arquivo Python (por exemplo, app.py) e adicione o seguinte código:
+
+
+import streamlit as st
+
+
+st.title('Hello Streamlit')
+st.write('Bem-vindo ao curso de Streamlit!')
+
+
+Para executar o script, abra o terminal, navegue até o diretório onde o arquivo está salvo e execute:
+	
+streamlit run app.py
+
+Isso abrirá um novo navegador com a aplicação web exibindo o título "Hello Streamlit" e a mensagem "Bem-vindo ao curso de Streamlit!".
+Com esta introdução, você tem uma visão geral do que é o Streamlit, como ele se compara com outras ferramentas de desenvolvimento web e como instalar e executar um script básico.
+
+2. Fundamentos do Streamlit (1 hora)
+2.1 Estrutura básica de uma aplicação
+Conhecendo melhor sobre o Streamlit vamos começar a desenvolver estruturas básica de manipulação de layout com Streamlit, vamos começar explorando as estruturas de:
+
+Título, cabeçalho, texto, markdown:
+Título: Adiciona um título principal à aplicação.
+st.title('Título da Aplicação')
+Cabeçalho: Adiciona um cabeçalho de nível secundário.
+st.header('Cabeçalho Secundário')
+Subcabeçalho: Adiciona um subcabeçalho de nível terciário.
+st.subheader('Subcabeçalho Terciário')
+Texto: Adiciona um parágrafo de texto simples.
+st.text('Este é um texto simples.')
+Markdown: Adiciona texto formatado usando Markdown.
+st.markdown('**Este é um texto em negrito usando Markdown.**')
+Elementos de layout:
+Sidebar: Adiciona uma barra lateral para inserir elementos de interface.
+st.sidebar.title('Título na Barra Lateral')
+st.sidebar.markdown('Texto na barra lateral.')
+Columns: Cria uma disposição em colunas para organizar elementos horizontalmente.
+col1, col2 = st.columns(2)
+col1.write('Este é o conteúdo da primeira coluna.')
+col2.write('Este é o conteúdo da segunda coluna.')
+
+2.2 Widgets interativos
+Botões: Cria um botão que executa uma ação quando clicado.
+#botões
+if col1.button('Clique aqui'):
+    col1.write('Botão clicado!')
+
+Caixas de seleção: Cria uma caixa de seleção que pode ser marcada ou desmarcada.
+#Caixa de seleção
+if col2.checkbox('Marque-me'):
+    	    col2.write('Caixa marcada!')
+
+Sliders: Cria um controle deslizante para selecionar um valor dentro de um intervalo.
+#Sliders
+age = st.slider('Selecione sua idade', 0, 100, 20)
+st.write(f'Sua idade é: {age}')
+
+Inputs: Cria uma caixa de entrada de texto.
+#inputs
+nome = st.text_input('Digite seu nome')
+st.write(f'Seu nome é: {nome}')
+
+
+
+2.3 Exibição de texto e dados
+
+DataFrames: Exibe um DataFrame pandas como uma tabela interativa.
+#DataFrames
+import pandas as pd
+data = {'Coluna 1': [1, 2, 3], 'Coluna 2': [4, 5, 6]}
+df = pd.DataFrame(data)
+st.write(df)
+
+Tabelas: Exibe dados em formato de tabela estática.
+#Tabela
+st.table(df)
+
+JSON: Exibe dados no formato JSON.
+#Json
+json_data = {'chave': 'valor', 'lista': [1, 2, 3]}
+st.json(json_data)
+
+Com esta introdução aos fundamentos do Streamlit, você está preparado para criar aplicações web interativas utilizando esta ferramenta.
+
+3. Trabalhando com Dados e Visualizações
+3.1 Carregamento e exibição de dados
+Integração com pandas:
+Manipulação de DataFrames: Streamlit permite a integração direta com pandas, a biblioteca padrão para manipulação de dados em Python. Aqui, vamos carregar um conjunto de dados, manipulá-lo e exibi-lo.
+
+
+import streamlit as st
+import pandas as pd
+# Carregar dados de um arquivo CSV
+df = pd.read_csv('movies.csv')
+
+
+# Exibir os primeiros registros do DataFrame
+st.write(df.head())
+
+Filtragem e exibição dinâmica: Streamlit facilita a criação de interfaces para filtrar e visualizar dados dinamicamente.
+
+	# Filtragem simples
+filtro = st.sidebar.selectbox('Selecione uma coluna para filtrar:', df.columns)
+valor = st.sidebar.text_input('Digite o valor a ser filtrado:')
+
+
+# Aplicar o filtro ao DataFrame
+df_filtrado = df[df[filtro] == valor]
+st.write(df_filtrado
+
+3.2 Visualizações com matplotlib, seaborn e plotly
+Para ilustrar como usar essas bibliotecas de plotagem no Streamlit, criaremos uma estrutura de dados simples.
+	import streamlit as st
+import pandas as pd
+import numpy as np
+
+
+# Criar um DataFrame de exemplo
+np.random.seed(42)
+data = {
+    'categoria': ['A', 'B', 'C', 'D'] * 25,
+    'valor1': np.random.randn(100),
+    'valor2': np.random.rand(100) * 100
+}
+df = pd.DataFrame(data)
+
+Gráficos com matplotlib:
+Matplotlib é uma biblioteca popular para criar gráficos estáticos em Python. Veja como integrá-lo com Streamlit:
+import matplotlib.pyplot as plt
+
+
+# Gráfico de barras
+fig, ax = plt.subplots()
+df.groupby('categoria').mean()['valor1'].plot(kind='bar', ax=ax)
+ax.set_title('Média de Valor2 por Categoria')
+st.pyplot(fig)
+
+Gráficos com seaborn:
+Seaborn é construído sobre o matplotlib e fornece uma interface de alto nível para criar visualizações atraentes e informativas.
+	import seaborn as sns
+
+
+# Gráfico de dispersão com seaborn
+fig, ax = plt.subplots()
+sns.scatterplot(data=df, x='valor1', y='valor2', hue='categoria', ax=ax)
+ax.set_title('Dispersão de Valor1 vs Valor2')
+st.pyplot(fig)
+
+Gráficos com plotly:
+Plotly é uma biblioteca que permite criar gráficos interativos. Aqui está um exemplo de uso com Streamlit:
+import plotly.express as px
+# Gráfico de dispersão com plotly
+fig = px.scatter(df, x='valor1', y='valor2', color='categoria', title='Dispersão de Valor1 vs Valor2')
+st.plotly_chart(fig)
+
+
+Exemplos Práticos de Uso de Dados e Visualizações
+Exemplo 1: Análise de Vendas
+Criação dos  Dados:
+import pandas as pd
+import numpy as np
+
+
+# Semente para reprodutibilidade
+# Ao definir a semente (seed) para o gerador de números aleatórios, garantimos que os resultados
+# sejam os mesmos toda vez que o código for executado. Isso é útil para testes e depuração.
+np.random.seed(42)
+
+
+# Datas ao longo de um ano
+# Cria uma série de datas de 1º de janeiro de 2023 a 31 de dezembro de 2023, uma por dia.
+datas = pd.date_range(start='2023-01-01', end='2023-12-31', freq='D')
+
+
+# Categorias e Subcategorias
+# Define categorias de produtos e suas subcategorias correspondentes.
+categorias = ['Eletrônicos', 'Roupas', 'Alimentos', 'Móveis']
+subcategorias = {
+    'Eletrônicos': ['Celulares', 'Computadores', 'TVs', 'Câmeras'],
+    'Roupas': ['Camisetas', 'Calças', 'Casacos', 'Sapatos'],
+    'Alimentos': ['Frutas', 'Verduras', 'Carnes', 'Laticínios'],
+    'Móveis': ['Mesas', 'Cadeiras', 'Sofás', 'Camas']
+}
+
+
+# Número de registros
+# Define o número de registros que serão gerados. Aqui, um registro por dia do ano.
+num_records = 365  # Um registro por dia
+
+
+# Geração dos dados
+# Inicializa um dicionário para armazenar os dados.
+data = {
+    'data': np.random.choice(datas, num_records),  # Escolhe aleatoriamente datas do ano
+    'categoria': np.random.choice(categorias, num_records),  # Escolhe aleatoriamente categorias
+}
+
+
+# Adicionar subcategorias baseadas nas categorias
+# Para cada categoria escolhida, escolhe aleatoriamente uma subcategoria correspondente.
+data['subcategoria'] = [np.random.choice(subcategorias[cat]) for cat in data['categoria']]
+
+
+# Valores de vendas e quantidade
+# Gera valores de vendas aleatórios entre 20 e 500, com duas casas decimais.
+data['vendas'] = np.round(np.random.uniform(20, 500, num_records), 2)
+# Gera quantidades aleatórias entre 1 e 20.
+data['quantidade'] = np.random.randint(1, 20, num_records)
+
+
+# Criar DataFrame
+# Converte o dicionário em um DataFrame do pandas.
+df_vendas = pd.DataFrame(data)
+
+
+# Ordenar por data
+# Ordena os registros do DataFrame pela coluna de data.
+df_vendas.sort_values('data', inplace=True)
+
+
+# Salvar em CSV
+# Salva o DataFrame em um arquivo CSV chamado 'vendas.csv', sem incluir o índice.
+df_vendas.to_csv('vendas.csv', index=False)
+
+
+# Mostrar os primeiros registros
+# Exibe os primeiros registros do DataFrame para verificação.
+print(df_vendas.head())
+	
+Detalhes do Aplicativo
+Carregamento de Dados: Os dados são carregados a partir do arquivo vendas.csv utilizando a função load_data(), que é decorada com @st.cache_data para otimizar o carregamento dos dados.
+	# Função para carregar os dados
+@st.cache_data
+def load_data():
+    		return pd.read_csv('vendas.csv')
+Barra Lateral de Filtros:
+Filtro por Categoria: Permite selecionar múltiplas categorias de produtos.
+Filtro por Subcategoria: Permite selecionar múltiplas subcategorias de produtos.
+Visualização de Dados Filtrados: Exibe uma tabela com os dados filtrados com base nas seleções feitas na barra lateral.
+Gráficos Interativos:
+Tipo de Gráfico: O usuário pode selecionar o tipo de gráfico (Barra, Linha, Dispersão, Histograma).
+Cria e exibe o gráfico selecionado utilizando Plotly Express.
+Métricas de Vendas: Exibe métricas agregadas das vendas filtradas, incluindo o total de vendas e a quantidade total de produtos vendidos.
+
+Exemplo2 - Crie análise para o Exemplo dos Filmes feito anteriormente
+
+Com esta introdução detalhada ao carregamento e exibição de dados, bem como visualizações usando matplotlib, seaborn e plotly, você está preparado para criar aplicações web interativas e dinâmicas com Streamlit.
+
+4. Componentes Avançados e Customização (1 hora)
+4.1 Adicionando interatividade:
+Uso de widgets para filtrar dados
+Exemplos práticos
+4.2 Customizando visualizações:
+Ajustes de layout e estilos
+Temas e cores
+4.3 Uso de callbacks e atualização de elementos:
+Funções reativas
+Exemplos de callbacks
+5. Projeto Prático (30 minutos)
+5.1 Desenvolvimento de uma aplicação completa:
+Dashboard interativo de análise de dados
+Exemplos do mundo real
+5.2 Implementação de um dashboard interativo:
+Passo a passo para criar um dashboard
+Integração de gráficos e tabelas interativas
+6. Q&A e Encerramento (30 minutos)
+6.1 Perguntas e Respostas:
+Discussão de dúvidas e soluções
+6.2 Dicas e boas práticas:
+Melhores práticas para desenvolvimento com Streamlit
+6.3 Recursos adicionais e próximos passos:
+Documentação oficial
+Comunidade e fóruns
+Materiais de Suporte:
+Documentação do Streamlit: Streamlit Docs
+Repositório de Exemplos: Streamlit Example Apps
+Tutoriais e Vídeos: Canal oficial do Streamlit no YouTube
+Conclusão
+Este curso de 4 horas fornece uma introdução completa ao Streamlit, capacitando os alunos a criar aplicações web interativas utilizando seus conhecimentos avançados de Python e ferramentas de plotagem. Ao final do curso, os alunos serão capazes de desenvolver e implementar dashboards de dados sofisticados e interativos.
+
